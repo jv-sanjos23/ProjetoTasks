@@ -7,14 +7,14 @@
 
 body {
     background: #f5f5f5;
-    display: flex;
-    justify-content: center;
+    min-height: 100vh;
 }
 
 .container {
-    width: 100%;
-    max-width: 400px;
-    padding: 20px;
+    width: 90%;
+    max-width: 900px;
+    margin: auto;
+    padding: 30px;
 }
 
 /* HEADER */
@@ -125,8 +125,10 @@ header p {
 .menu {
     position: fixed;
     bottom: 0;
-    width: 100%;
-    max-width: 400px;
+    width: 90%;
+    max-width: 900px;
+    left: 50%;
+    transform: translateX(-50%);
     background: #ff7a00;
     display: flex;
     justify-content: space-around;
@@ -257,9 +259,28 @@ textarea.input {
 
 /* LOGIN */
 
+@media (max-width: 768px) {
+
+    .container,
+    .login-container,
+    .menu {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 0;
+    }
+
+    .linha {
+        flex-direction: column;
+    }
+
+    .btn-criar {
+        width: 100%;
+    }
+}
+
 .login-container {
-    width: 100%;
-    max-width: 400px;
+    width: 90%;
+    max-width: 1000px;
     padding: 20px;
     margin: auto;
     height: 100vh;
@@ -267,6 +288,10 @@ textarea.input {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+}
+
+.card {
+    width: 100%;
 }
 
 /* TOPO */
