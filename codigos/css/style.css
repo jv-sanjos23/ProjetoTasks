@@ -11,10 +11,10 @@ body {
 }
 
 .container {
-    width: 90%;
-    max-width: 900px;
-    margin: auto;
+    width: 100%;
+    min-height: 100vh;
     padding: 30px;
+    padding-bottom: 100px;
 }
 
 /* HEADER */
@@ -43,6 +43,7 @@ header p {
 
 /* CARDS */
 .tarefas {
+    width: 100%;
     margin-top: 20px;
     display: flex;
     flex-direction: column;
@@ -50,6 +51,7 @@ header p {
 }
 
 .card {
+    width: 100%;
     background: #e0a96d;
     border-radius: 15px;
     padding: 15px;
@@ -84,7 +86,6 @@ header p {
     right: 10px;
     bottom: 10px;
 }
-
 .acoes button {
     border: none;
     border-radius: 50%;
@@ -92,7 +93,6 @@ header p {
     margin-left: 5px;
     cursor: pointer;
 }
-
 .ok {
     background: rgb(5, 218, 5);
     color: white;
@@ -125,15 +125,14 @@ header p {
 .menu {
     position: fixed;
     bottom: 0;
-    width: 90%;
-    max-width: 900px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
+    width: 100%;
     background: #ff7a00;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 14px;
+    padding: 14px 20px;
+    z-index: 1000;
 }
 
 .menu span {
@@ -147,7 +146,6 @@ header p {
     font-size: 24px;
     padding: 12px 18px;
     border: none;
-    
     position: absolute;
     top: -20px;
     left: 50%;
@@ -202,11 +200,9 @@ header p {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-
     width: 100%;
     padding: 15px;
     padding-right: 40px; /* espaço pra seta */
-
     border-radius: 15px;
     border: 2px solid #c46a2e;
     background: #e6d8c3;
@@ -260,7 +256,6 @@ textarea.input {
 /* LOGIN */
 
 @media (max-width: 768px) {
-
     .container,
     .login-container,
     .menu {
@@ -279,51 +274,30 @@ textarea.input {
 }
 
 .login-container {
-    width: 90%;
-    max-width: 1000px;
-    padding: 20px;
-    margin: auto;
-    height: 100vh;
-    background: linear-gradient(#ffffff 15%, #ff7a00 100%);
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(#ff7a00 5%, #f3b37d 100%);
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
 }
 
 .card {
     width: 100%;
 }
 
-/* TOPO */
-.topo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 45%;
-}
 
-.circulo {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    border: 3px solid #8a4b1f;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-}
-
-.circulo img {
-    width: 100px;
-}
 
 /* CARD */
 .login-box {
-    background: #eee;
+    width: 100%;
+    max-width: 420px;
+    background: #ffffff;
     border-radius: 25px;
-    padding: 25px;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-    margin-bottom: 30px;
+    padding: 35px 25px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+    margin: auto;
 }
 
 /* INPUT */
@@ -340,6 +314,12 @@ textarea.input {
     background: #e6d8c3;
 }
 
+.input-group input::placeholder {
+
+    color: #c46a2e;
+    
+}
+
 .input-group span {
     position: absolute;
     right: 15px;
@@ -353,7 +333,7 @@ textarea.input {
     padding: 12px;
     border: none;
     border-radius: 20px;
-    background: #e0a96d;
+    background: #ff8a2a;
     font-weight: bold;
     margin-top: 10px;
     box-shadow: 0 3px 0 #8a4b1f;
@@ -382,4 +362,215 @@ textarea.input {
     color: red;
     text-align: center;
     margin-bottom: 10px;
+}
+
+
+
+/* TELA DE CADASTRO */
+
+.cadastro-body{
+    background: linear-gradient(#ff7a00 5%, #f3b37d 100%);
+    min-height: 100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+/* CARD */
+
+.cadastro-box{
+    width:100%;
+    max-width:420px;
+    background:#efefef;
+    border-radius:25px;
+    padding:35px 25px;
+    box-shadow:0 6px 15px rgba(0,0,0,0.25);
+}
+
+/* LOGO */
+
+.logo{
+    display:flex;
+    justify-content:center;
+    margin-bottom:25px;
+}
+
+.logo-circulo{
+    width:170px;
+    height:170px;
+    border-radius:50%;
+    background:#ffd7bb;
+    border:6px solid #e66b00;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+.logo-circulo img{
+    width:120px;
+}
+
+/* BOTÃO CADASTRO */
+
+.btn-cadastro{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:20px;
+    background:#ff8a2a;
+    font-weight:bold;
+    margin-top:10px;
+    cursor:pointer;
+    box-shadow:0 4px 0 #8a4b1f;
+    transition:0.2s;
+}
+
+.btn-cadastro:hover{
+    transform:translateY(-2px);
+}
+
+/* LINK LOGIN */
+
+.login-link{
+    text-align:center;
+    margin-top:18px;
+    font-size:14px;
+}
+
+.login-link a{
+    color:black;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+
+
+/*TELA WELCOME */
+
+.welcome-body{
+    min-height:100vh;
+    background:#f5f5f5;
+}
+
+/* CONTAINER */
+
+.welcome-container{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+/* TOPO */
+
+.welcome-top{
+    flex:1;
+    background:linear-gradient(#ff8a2a 5%, #f3b37d 100%);
+    padding:40px 25px;
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.welcome-top h1{
+    color:white;
+    font-size:38px;
+    font-weight:bold;
+    margin-top:20px;
+    text-shadow:2px 2px 0 #a34700;
+}
+
+.welcome-top p{
+    color:black;
+    font-weight:bold;
+    font-size:20px;
+    margin-top:15px;
+    max-width:500px;
+}
+
+/* IMAGEM */
+
+.welcome-img{
+    margin-top:30px;
+    display:flex;
+    justify-content:center;
+}
+
+.welcome-img img{
+    width:150px;
+    max-width:90%;
+}
+
+/* PARTE DE BAIXO */
+
+.welcome-bottom{
+    background:#f3e6d7;
+    padding:40px 25px;
+    border-top-left-radius:30px;
+    border-top-right-radius:30px;
+    text-align:center;
+}
+
+.welcome-bottom h2{
+    color:white;
+    font-size:45px;
+    font-weight:bold;
+    -webkit-text-stroke:2px #d15d00;
+    margin-bottom:30px;
+}
+
+/* BOTÕES */
+
+.btn-welcome{
+    width:100%;
+    max-width:400px;
+    background:#e0a96d;
+    color:black;
+    text-decoration:none;
+    padding:16px;
+    border-radius:25px;
+    display:block;
+    margin:0 auto;
+    font-weight:bold;
+    box-shadow:0 4px 0 #8a4b1f;
+    transition:0.2s;
+}
+
+.btn-welcome:hover{
+    transform:translateY(-2px);
+}
+
+/* OU */
+
+.ou{
+    display:block;
+    margin:18px 0;
+    font-size:18px;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:768px){
+
+    .welcome-top h1{
+
+        font-size:26px;
+    }
+
+    .welcome-top p{
+
+        font-size:16px;
+    }
+
+    .welcome-img img{
+
+        width:220px;
+    }
+
+    .welcome-bottom h2{
+
+        font-size:35px;
+    }
 }
