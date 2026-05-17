@@ -1,3 +1,32 @@
+<?php
+include "config.php";
+
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+}
+
+$user_id = $_SESSION['user_id'];
+
+/* CONCLUIR */
+if (isset($_GET['concluir'])) {
+    $id = intval($_GET['concluir']);
+    $conn->query("UPDATE tarefas SET concluida = 1 WHERE id = $id AND usuario_id = $user_id");
+}
+
+/* EXCLUIR */
+if (isset($_GET['excluir'])) {
+    $id = intval($_GET['excluir']);
+    $conn->query("DELETE FROM tarefas WHERE id = $id AND usuario_id = $user_id");
+}
+
+/* LISTAR */
+$tarefas = $conn->query("SELECT * FROM tarefas WHERE usuario_id = $user_id ORDER BY horario ASC");
+
+$data = date("d \\d\\e F, Y");
+$dia = strtoupper(strftime("%A"));
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
