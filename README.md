@@ -18,4 +18,6 @@ coloque os códigos disponiveis nesse repositório.<br>
 abra o xampp e clique em Start nos módulos Apache e mysql.<br>
 
 abra o mysql crie um banco de dados chamado "tarefas_app".<br>
-coloque o script de banco de dados disponivel nesse repositório e execute.
+coloque o script de banco de dados disponivel nesse repositório e execute.<br>
+
+Para abrir o projeto,abra um navegador e digite http://localhost/(nomedapasta)/welcome.php
