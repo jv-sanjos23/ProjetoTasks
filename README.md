@@ -9,7 +9,7 @@ link para baixar o xampp:
 https://www.apachefriends.org/pt_br/download.html
 
 link para baixar o mysql:
-https://dev.mysql.com/downloads/installer/
+https://downloads.mysql.com/archives/workbench/
 
 crie uma pasta no C:\xampp\htdocs<br>
 crie os arquivos .php e css dentro da pasta.<br>
