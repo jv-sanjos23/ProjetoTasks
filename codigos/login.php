@@ -74,9 +74,11 @@ if ($_POST) {
                 Cadastre-se agora!
             </a>
         </p>
+        <a href="redefinir_senha.php">
         <p class="senha">
             Esqueci a senha.
         </p>
+        </a>
     </div>
 </div>
 
