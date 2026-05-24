@@ -58,8 +58,8 @@ if ($_POST) {
         </div>
 
         <div class="linha">
-            <input class="input" type="time" name="hora" required>
-            <input class="input" type="date" name="data" required>
+            <input class="input" type="time" class="input" name="hora" required>
+            <input class="input" type="date" class="input" name="data" min="<?= date('Y-m-d') ?>"required>
         </div>
 
         <textarea class="input" name="descricao" placeholder="Descrição da Tarefa (Opcional):"></textarea>
