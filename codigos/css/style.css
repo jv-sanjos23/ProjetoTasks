@@ -6,7 +6,7 @@
 }
 
 body {
-    background: #f5f5f5;
+    background: #ffffff;
     min-height: 100vh;
 }
 
@@ -19,9 +19,9 @@ body {
 
 /* HEADER */
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
 header h1 {
@@ -34,11 +34,23 @@ header p {
     font-size: 14px;
 }
 
-.perfil {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 2px solid black;
+.perfil-box{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.foto-user{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.nome-user{
+    font-size:16px;
+    font-weight:bold;
+    color:#ff7a00;
 }
 
 /* CARDS */
@@ -87,13 +99,16 @@ header p {
     right: 10px;
     bottom: 10px;
 }
+
 .acoes button {
     border: none;
     border-radius: 50%;
     padding: 5px 8px;
     margin-left: 5px;
     cursor: pointer;
+    transition:0.2s;
 }
+
 .ok {
     background: rgb(5, 218, 5);
     color: white;
@@ -108,6 +123,9 @@ header p {
 .sequencia {
     margin-top: 20px;
     background: #ff7a00;
+    box-shadow: 4px 8px 15px 0px rgba(0, 0, 0, 0.3);
+    border: 1px solid brown;
+    border-bottom: 5px solid brown;
     padding: 10px;
     border-radius: 15px;
     color: white;
@@ -151,8 +169,52 @@ header p {
     top: -20px;
     left: 50%;
     transform: translateX(-50%);
+    transition: 0.2s;
 }
 
+/* MODAL */
+
+.modal{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.5);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:2000;
+}
+
+.modal-box{
+    width:90%;
+    max-width:400px;
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    position:relative;
+}
+
+.modal-box h2{
+    color:#ff7a00;
+    margin-bottom:20px;
+}
+
+.modal-box p{
+    margin-bottom:12px;
+    font-size:15px;
+}
+
+.fechar{
+    position:absolute;
+    right:15px;
+    top:15px;
+    border:none;
+    background:none;
+    font-size:18px;
+    cursor:pointer;
+}
 
 /* TELA NOVA TAREFA */
 
@@ -257,6 +319,7 @@ textarea.input {
 /* LOGIN */
 
 @media (max-width: 768px) {
+
     .container,
     .login-container,
     .menu {
@@ -326,6 +389,7 @@ textarea.input {
     right: 15px;
     top: 50%;
     transform: translateY(-50%);
+    cursor:pointer;
 }
 
 /* BOTÃO */
@@ -401,20 +465,41 @@ textarea.input {
     width:170px;
     height:170px;
     border-radius:50%;
-    background:#ffd7bb;
+    background:#ffffff; /* MUDE A COR AQUI */
     border:6px solid #e66b00;
     display:flex;
     justify-content:center;
     align-items:center;
     overflow:hidden;
 }
-
 .logo-circulo img{
-    width:120px;
+    width:195px;
+    height:auto;
+}
+
+.llogo{
+    display:flex;
+    justify-content:center;
+    margin-bottom:25px;
+}
+
+.llogo-circulo{
+    width:170px;
+    height:170px;
+    border-radius:50%;
+    background:#ffffff; /* MUDE A COR AQUI */
+    border:6px solid #e66b00;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+.llogo-circulo img{
+    width:135px;
+    height:auto;
 }
 
 /* BOTÃO CADASTRO */
-
 .btn-cadastro{
     width:100%;
     padding:14px;
@@ -447,16 +532,16 @@ textarea.input {
 }
 
 
-
-/*TELA WELCOME */
+/* TELA WELCOME */
 
 .welcome-body{
     min-height:100vh;
     background:#f5f5f5;
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 /* CONTAINER */
-
 .welcome-container{
     min-height:100vh;
     display:flex;
@@ -464,7 +549,6 @@ textarea.input {
 }
 
 /* TOPO */
-
 .welcome-top{
     flex:1;
     background:linear-gradient(#ff8a2a 5%, #f3b37d 100%);
@@ -484,31 +568,32 @@ textarea.input {
 }
 
 .welcome-top p{
-    color:black;
-    font-weight:bold;
-    font-size:20px;
-    margin-top:15px;
-    max-width:500px;
+    color:white;
+    font-size:18px;
+    margin-top:10px;
 }
 
 /* IMAGEM */
 
 .welcome-img{
-    margin-top:30px;
+    width:100%;
     display:flex;
     justify-content:center;
+    margin-top:20px;
+    overflow:visible;
 }
 
 .welcome-img img{
-    width:150px;
-    max-width:90%;
+    width:220px;   /* aumenta aqui */
+    max-width:100%;
+    height:auto;
 }
 
 /* PARTE DE BAIXO */
 
 .welcome-bottom{
     background:#f3e6d7;
-    padding:40px 25px;
+    padding:25px;
     border-top-left-radius:30px;
     border-top-right-radius:30px;
     text-align:center;
@@ -542,7 +627,6 @@ textarea.input {
 .btn-welcome:hover{
     transform:translateY(-2px);
 }
-
 /* OU */
 
 .ou{
@@ -554,24 +638,348 @@ textarea.input {
 /* RESPONSIVO */
 
 @media(max-width:768px){
-
     .welcome-top h1{
-
         font-size:26px;
     }
-
     .welcome-top p{
-
         font-size:16px;
     }
-
     .welcome-img img{
-
-        width:220px;
+        width:300px; /* tamanho maior no celular */
     }
-
     .welcome-bottom h2{
-
         font-size:35px;
     }
+}
+
+
+/* TELA CONFIGURAÇÕES */
+
+.config-body{
+    background:#e9e9e9;
+    min-height:100vh;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.config-container{
+    padding-bottom:100px;
+}
+
+/* TOPO */
+
+.config-topo{
+    background:#ff8a2a;
+    padding:25px 20px 35px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    border-bottom-left-radius:20px;
+    border-bottom-right-radius:20px;
+}
+
+.perfil-config{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.foto-perfil{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.perfil-config h2{
+    color:white;
+    font-size:32px;
+    font-weight:bold;
+}
+
+/* VOLTAR */
+
+.btn-voltar{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    border:2px solid black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    color:black;
+    font-size:22px;
+    font-weight:bold;
+}
+
+/* MENU */
+
+.config-menu{
+    padding:25px 20px;
+}
+
+.item-config{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    text-decoration:none;
+    color:black;
+    font-size:18px;
+    margin-bottom:30px;
+}
+
+.item-config span{
+    font-size:24px;
+}
+
+/* LINHA */
+
+.linha-config{
+    width:100%;
+    height:1px;
+    background:#888;
+    margin:40px 0 25px;
+}
+
+/* SAIR */
+
+.sair{
+    text-decoration:none;
+    color:black;
+    font-size:18px;
+}
+.btn-limite{
+    width:100%;
+    border:none;
+    outline:none;
+    background:none;
+    cursor:pointer;
+    text-align:left;
+}
+.modal-box{
+
+    position:relative;
+}
+
+.modal-box::after{
+    content:"▼";
+    position:absolute;
+    right:40px;
+    top:138px;
+    pointer-events:none;
+    font-size:12px;
+}
+.modal-box select{
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    padding-right:50px;
+}
+/* BOTÕES DO MODAL */
+
+.btn-sim{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:18px;
+    background:#ff8a2a;
+    color:white;
+    font-weight:bold;
+    font-size:15px;
+    cursor:pointer;
+    margin-top:10px;
+    box-shadow:0 4px 0 #a34700;
+    transition:0.2s;
+}
+
+.btn-sim:hover{
+    transform:scale(1.03);
+}
+
+.btn-fechar{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:18px;
+    background:#d9d9d9;
+    color:black;
+    font-weight:bold;
+    font-size:15px;
+    cursor:pointer;
+    margin-top:12px;
+    box-shadow:0 4px 0 #888;
+    transition:0.2s;
+}
+
+.btn-fechar:hover{
+    transform:scale(1.03);
+}
+
+/* TELA TIMER */
+
+.timer-body{
+    background:#efefef;
+    min-height:100vh;
+}
+
+.timer-container{
+    padding:25px 20px 120px;
+}
+
+/* TOPO */
+
+.timer-topo{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:40px;
+}
+
+.timer-topo h1{
+    color:#ff7a00;
+    font-size:35px;
+    font-weight:bold;
+}
+.timer-topo p{
+    color:#ff7a00;
+    margin-top:8px;
+    font-size:15px;
+    max-width:230px;
+}
+
+/* VOLTAR */
+.btn-voltar-timer{
+    width:42px;
+    height:42px;
+    border:2px solid black;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-decoration:none;
+    color:black;
+    font-size:24px;
+    font-weight:bold;
+}
+
+/* TIMER */
+
+.timer-box{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    margin-top:-70px; /* sobe tudo */
+}
+
+/* CÍRCULO */
+
+.circulo-timer{
+    width:260px;
+    height:260px;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-left:25px; /* move tudo pra direita */
+    padding-top: 25px;
+}
+
+.circulo-timer svg{
+    width:260px;
+    height:260px;
+    transform:rotate(-90deg);
+}
+
+.circulo-timer circle{
+    fill:none;
+    stroke-width:10;
+    
+}
+
+.circulo-timer circle:first-child{
+    stroke:#ffd2bf;
+}
+
+#progresso{
+    stroke:#ff7a00;
+    stroke-linecap:round;
+    transition:0.5s;
+}
+
+/* TEMPO */
+
+.tempo{
+    position:absolute;
+    top:50%;
+    left:47%; /* diminua aqui */
+    transform:translate(-50%, -50%);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    width:100%;
+    padding-top: 40px;
+    padding-right: 3px;
+}
+
+.tempo span{
+    font-size:80px;
+    font-weight:bold;
+    color:#ff7a00;
+    line-height:1;
+}
+
+.tempo small{
+    font-size:30px;
+    color:#ff7a00;
+    margin-top:-5px;
+}
+
+/* PLAY */
+.btn-play{
+    margin-top:25px;
+    width:70px;
+    height:70px;
+    border:none;
+    border-radius:50%;
+    background:#ff7a00;
+    color:white;
+    font-size:32px;
+    cursor:pointer;
+    box-shadow:0 5px 0 #a34700;
+    transition:0.2s;
+}
+
+.btn-play:hover{
+    transform:scale(1.08);
+}
+
+/* PONTOS */
+
+.pontos{
+    display:flex;
+    gap:10px;
+    margin-top:25px;
+}
+
+.pontos span{
+    width:14px;
+    height:14px;
+    border-radius:50%;
+    border:2px solid #ff7a00;
+}
+
+.pontos .ativo{
+    background:#ff7a00;
+}
+
+/* FRASE */
+
+.frase{
+    margin-top:35px;
+    color:#ff7a00;
+    font-size:20px;
+    font-weight:bold;
+    text-align:center;
 }
