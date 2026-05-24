@@ -91,7 +91,7 @@ toggle.addEventListener("click", function(){
 
     if(senha.type === "password"){
         senha.type = "text";
-        toggle.innerHTML = "🙈";
+        toggle.innerHTML = "◡";
     } else {
         senha.type = "password";
         toggle.innerHTML = "👁";
