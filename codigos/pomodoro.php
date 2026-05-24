@@ -22,6 +22,8 @@ WHERE id = $user_id
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Pomodoro Timer</title>
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body class="timer-body">
 <div class="timer-container">
@@ -87,18 +89,18 @@ WHERE id = $user_id
 </div>
 <!-- MENU -->
 <nav class="menu">
-    <a href="index.php">
-        <span>🏠</span>
+    <a href="index.php" style="color: black; text-decoration: none;">
+        <i class="fa-solid fa-house"></i>
     </a>
-    <span>📂</span>
+    <i class="fa-solid fa-folder"></i>
     <a href="nova_tarefa.php">
-        <button class="add">+</button>
+        <button class="add" id="btnAdd">+</button>
     </a>
     <a href="pomodoro.php" style="color: black; text-decoration: none;">
-        <span>⏱</span>
+        <i class="fa-solid fa-clock"></i>
     </a>
     <a href="configuracoes.php" style="color: black; text-decoration: none;">
-        <span>⚙</span>
+        <i class="fa-solid fa-gear"></i>
     </a>
 </nav>
 <script>
@@ -217,4 +219,6 @@ atualizarTela();
 </script>
 
 </body>
+
+
 </html>
