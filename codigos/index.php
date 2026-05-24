@@ -15,9 +15,67 @@ WHERE usuario_id = $user_id
 
 /* CONCLUIR */
 if (isset($_GET['concluir'])) {
+
     $id = intval($_GET['concluir']);
-    $conn->query("UPDATE tarefas SET concluida = 1 WHERE id = $id AND usuario_id = $user_id");
+
+    // verifica se já estava concluída
+    $verifica = $conn->query("
+    SELECT concluida
+
+    FROM tarefas
+
+    WHERE id = $id
+    AND usuario_id = $user_id
+    ");
+
+    $tarefa = $verifica->fetch_assoc();
+
+    if($tarefa && !$tarefa['concluida']){
+
+        // conclui tarefa
+        $conn->query("
+        UPDATE tarefas
+
+        SET concluida = 1
+
+        WHERE id = $id
+        AND usuario_id = $user_id
+        ");
+
+        // soma sequência
+        $conn->query("
+        UPDATE usuarios
+
+        SET tarefas_concluidas = tarefas_concluidas + 1
+
+        WHERE id = $user_id
+        ");
+    }
 }
+
+// total concluído
+$user = $conn->query("
+SELECT tarefas_concluidas, nome
+
+FROM usuarios
+
+WHERE id = $user_id
+")->fetch_assoc();
+
+$total = $user['tarefas_concluidas'];
+
+// pega próxima fase
+$fase = $conn->query("
+SELECT *
+
+FROM fases
+
+WHERE quantidade > $total
+
+ORDER BY quantidade ASC
+
+LIMIT 1
+")->fetch_assoc();
 
 /* EXCLUIR */
 if (isset($_GET['excluir'])) {
@@ -62,6 +120,8 @@ $data = strftime('%d de %B, %Y.');
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tarefas</title>
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
@@ -121,24 +181,54 @@ data-descricao="<?= $t['descricao'] ?>"
 <?php endwhile; ?>
 </section>
 
+<?php
+
+$atual = $total;
+
+$meta = $fase ? $fase['quantidade'] : $total;
+
+$porcentagem = ($atual / $meta) * 100;
+
+if($porcentagem > 100){
+    $porcentagem = 100;
+}
+?>
+
 <div class="sequencia">
-    <span>SEQUÊNCIA DE TAREFAS: <b>2</b></span>
-    <div class="barra"></div>
+
+    <span>
+        <?= $fase['nome'] ?? 'TODAS AS FASES COMPLETAS' ?>
+    </span>
+
+    <p>
+        <?= $atual ?> / <?= $meta ?> tarefas
+    </p>
+
+    <div class="barra">
+
+        <div
+        class="progresso"
+
+        style="width:<?= $porcentagem ?>%">
+        </div>
+
+    </div>
+
 </div>
 
 </div>
 
 <nav class="menu">
-    <span>🏠</span>
-    <span>📂</span>
+    <a href="index.php" style="color: black; text-decoration: none;"><i class="fa-solid fa-house"></i></a>
+    <i class="fa-solid fa-folder"></i>
     
     <!-- BOTÃO QUE VAI PRA OUTRA TELA -->
     <a href="nova_tarefa.php">
         <button class="add" id="btnAdd">+</button>
     </a>
 
-    <a href="pomodoro.php" style="color: black; text-decoration: none;"><span>⏱</span></a>
-    <a href="configuracoes.php" style="color: black; text-decoration: none;"><span >⚙</span></a>
+    <a href="pomodoro.php" style="color: black; text-decoration: none;"><i class="fa-solid fa-clock"></i></a>
+    <a href="configuracoes.php" style="color: black; text-decoration: none;"><i class="fa-solid fa-gear"></i></a>
 </nav>
 
 <!-- MODAL -->
@@ -152,27 +242,22 @@ data-descricao="<?= $t['descricao'] ?>"
         </button>
 
         <h2 id="modalTitulo"></h2>
-
         <p>
             <b>Data:</b>
             <span id="modalData"></span>
         </p>
-
         <p>
             <b>Horário:</b>
             <span id="modalHorario"></span>
         </p>
-
         <p>
             <b>Prioridade:</b>
             <span id="modalPrioridade"></span>
         </p>
-
         <p>
             <b>Descrição:</b>
             <span id="modalDescricao"></span>
         </p>
-
     </div>
 
 </div>
@@ -180,9 +265,7 @@ data-descricao="<?= $t['descricao'] ?>"
 <script>
 
 const cards = document.querySelectorAll(".card");
-
 const modal = document.getElementById("modal");
-
 const fechar = document.getElementById("fecharModal");
 
 cards.forEach(function(card){
