@@ -11,6 +11,9 @@ JOÃO VICTOR SOUZA DOS ANJOS<br>
 JONATHAN SILVA NASCIMENTO<br>
 MONIQUE FERREIRA DOS SANTOS VELOSO.<br>
 
+# Website hospedado
+https://tasks.great-site.net
+
 # Tecnologias utilizadas
 O sistema foi desenvolvido utilizando uma arquitetura de desacoplamento entre o cliente (Front-end) e o servidor (Back-end), permitindo um carregamento mais rápido no dispositivo do usuário e facilitando a manutenção isolada do código.
 
